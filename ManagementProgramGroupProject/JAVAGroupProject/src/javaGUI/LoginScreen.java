@@ -23,19 +23,27 @@ class DBConnection{
 class SignUp extends JFrame {
     JTextField t1, t2;
     JButton b1;
+    JLabel l1;
     JRadioButton employeeRadioButton, employerRadioButton;
     ButtonGroup radioGroup;
 
     SignUp() {
         setLayout(null);
+        setSize(400,300);
+        
+        l1 = new JLabel("Sign Up");
+        l1.setFont(new Font("Times New Roman", Font.BOLD, 30));
+        l1.setForeground(Color.BLUE);
+        l1.setBounds(200, 10, 300, 40);
+        add(l1);
 
         t1 = new JTextField(60);
         t2 = new JPasswordField(60);
         b1 = new JButton("Submit");
 
-        t1.setBounds(100, 20, 80, 30);
-        t2.setBounds(100, 60, 80, 30);
-        b1.setBounds(100, 100, 80, 30);
+        t1.setBounds(190, 60, 120, 30);
+        t2.setBounds(190, 100, 120, 30);
+        b1.setBounds(210, 140, 80, 30);
 
         // Create radio buttons and a button group
         employeeRadioButton = new JRadioButton("Employee");
@@ -46,8 +54,8 @@ class SignUp extends JFrame {
         employeeRadioButton.setSelected(true);
 
         // Set the positions of radio buttons
-        employeeRadioButton.setBounds(100, 140, 100, 30);
-        employerRadioButton.setBounds(200, 140, 100, 30);
+        employeeRadioButton.setBounds(165, 210, 100, 30);
+        employerRadioButton.setBounds(265, 210, 100, 30);
 
         // Add radio buttons to the button group
         radioGroup.add(employeeRadioButton);
@@ -99,7 +107,7 @@ class Login extends JFrame {
         l1 = new JLabel("Login");
         l1.setFont(new Font("Times New Roman", Font.BOLD, 30));
         l1.setForeground(Color.BLUE);
-        l1.setBounds(120, 10, 300, 30);
+        l1.setBounds(160, 10, 300, 40);
         add(l1);
 
         t1 = new JTextField(60);
@@ -107,32 +115,27 @@ class Login extends JFrame {
         b1 = new JButton("Sign In");
         b2 = new JButton("Sign Up");
 
-        t1.setBounds(100, 60, 120, 30);
-        t2.setBounds(100, 100, 120, 30);
-        b1.setBounds(120, 140, 80, 30);
-        b2.setBounds(120, 170, 80, 30);
+        t1.setBounds(140, 60, 120, 30);
+        t2.setBounds(140, 100, 120, 30);
+        b1.setBounds(155, 140, 80, 30);
+        b2.setBounds(155, 170, 80, 30);
 
         l2 = new JLabel("");
-        l2.setBounds(250, 80, 300, 30);
+        l2.setBounds(150, 230, 300, 30);
         add(l2);
 
-        // Create radio buttons and a button group
         employeeRadioButton = new JRadioButton("Employee");
         employerRadioButton = new JRadioButton("Employer");
         radioGroup = new ButtonGroup();
-        
-        // Set the default selection to "Employee"
+
         employeeRadioButton.setSelected(true);
 
-        // Set the positions of radio buttons
-        employeeRadioButton.setBounds(120, 210, 100, 30);
-        employerRadioButton.setBounds(230, 210, 100, 30);
+        employeeRadioButton.setBounds(100, 210, 100, 30);
+        employerRadioButton.setBounds(200, 210, 100, 30);
 
-        // Add radio buttons to the button group
         radioGroup.add(employeeRadioButton);
         radioGroup.add(employerRadioButton);
 
-        // Add components to the frame
         add(t1);
         add(t2);
         add(b1);
@@ -163,6 +166,9 @@ class Login extends JFrame {
                         if (line.equals(username + "\t" + password + "\t" + userType)) {
                             match = true;
                             break;
+                        } else if (line.startsWith(username + "\t") && line.endsWith("\t" + userType)) {
+                            invalidUsername = false;
+                            invalidPassword = false;
                         } else if (line.startsWith(username + "\t")) {
                             invalidUsername = false;
                         } else if (line.endsWith("\t" + userType)) {
@@ -208,11 +214,16 @@ class Login extends JFrame {
     }
 }
 
-class LoginScreen{
-	public static void main(String[] args) {
-		Login l = new Login();
-		l.setBounds(400,200,500,300);
-		l.setVisible(true);
-	}
+class LoginScreen {
+    public static void main(String[] args) {
+        Login loginScreen = new Login();
+        loginScreen.setBounds(400, 200, 400, 300);
+        loginScreen.setVisible(true);
+
+        SignUp signUpScreen = new SignUp();
+        signUpScreen.setBounds(400, 200, 400, 300);
+        signUpScreen.setVisible(false); // Hide the sign-up screen initially
+    }
 }
+
 

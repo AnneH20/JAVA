@@ -19,15 +19,15 @@ class Employee extends JFrame{
 		t1 = new JTextField(60);
 		t2 = new JTextField(60);
 		
-		b3 = new JButton("Payroll");
-		b1 = new JButton("Hire");
-		b2 = new JButton("Fire");
+		b1 = new JButton("Clock In");
+		b2 = new JButton("Clock Out");		
+		b3 = new JButton("Log Out");
 		
 		t1.setBounds(100,60,120,30);
 		t2.setBounds(100,100,120,30);
 		
-		b1.setBounds(100,140,60,30);
-		b2.setBounds(160,140,60,30);
+		b1.setBounds(100,140,100,30);
+		b2.setBounds(200,140,100,30);
 		
 		b3.setBounds(125,180,75,30);
 		

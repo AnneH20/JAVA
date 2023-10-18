@@ -19,10 +19,10 @@ class Employer extends JFrame{
 		t1 = new JTextField(60);
 		t2 = new JTextField(60);
 		
-		b3 = new JButton("Payroll");
 		b1 = new JButton("Hire");
 		b2 = new JButton("Fire");
-		
+		b3 = new JButton("Payroll");
+
 		t1.setBounds(100,60,120,30);
 		t2.setBounds(100,100,120,30);
 		

@@ -12,7 +12,7 @@ class DBConnection{
 		try {
 		Class.forName("oracle.jbdc.driver.OracleDriver");
 		con = DriverManager.getConnection(
-				"jdbc.oracle:thin://@localhost/orcl", "anne", "anne");
+				"jdbc.oracle:thin://@localhost/orcl", "root", "JackJill20!");
 		System.out.println("Connection Established...!");
 		}catch(Exception e) {}
 				

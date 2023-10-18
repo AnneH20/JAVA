@@ -3,14 +3,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-class Employee extends JFrame{
+class Employer extends JFrame{
 	JLabel l1;
 	JTextField t1, t2;
 	JButton b1, b2, b3, b4;
-	Employee(){
+	Employer(){
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(null);
-		l1 = new JLabel("Employee View");
+		l1 = new JLabel("Employer View");
 		l1.setFont(new Font("Times New Roman",Font.BOLD,30));
 		l1.setForeground(Color.BLUE);
 		l1.setBounds(60,10,300,30);
@@ -40,9 +40,9 @@ class Employee extends JFrame{
 	}
 }
 
-class SimpleEmployee{
+class SimpleEmployer{
 	public static void main(String[] args) {
-		Employee e = new Employee();
+		Employer e = new Employer();
 		e.setBounds(400,200,400,300);
 		e.setVisible(true);
 	}

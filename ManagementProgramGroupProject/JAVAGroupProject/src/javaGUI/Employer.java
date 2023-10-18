@@ -2,6 +2,80 @@ package javaGUI;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.FileWriter;
+
+class SignUp extends JFrame {
+    JTextField t1, t2;
+    JButton b1;
+    JLabel l1;
+    JRadioButton employeeRadioButton, employerRadioButton;
+    ButtonGroup radioGroup;
+
+    SignUp() {
+        setLayout(null);
+        setSize(400,300);
+        
+        l1 = new JLabel("Hire");
+        l1.setFont(new Font("Times New Roman", Font.BOLD, 30));
+        l1.setForeground(Color.BLUE);
+        l1.setBounds(225, 10, 300, 40);
+        add(l1);
+
+        t1 = new JTextField(60);
+        t2 = new JPasswordField(60);
+        b1 = new JButton("Submit");
+
+        t1.setBounds(190, 60, 120, 30);
+        t2.setBounds(190, 100, 120, 30);
+        b1.setBounds(210, 140, 80, 30);
+
+        // Create radio buttons and a button group
+        employeeRadioButton = new JRadioButton("Employee");
+        employerRadioButton = new JRadioButton("Employer");
+        radioGroup = new ButtonGroup();
+
+        // Set the default selection to "Employee"
+        employeeRadioButton.setSelected(true);
+
+        // Set the positions of radio buttons
+        employeeRadioButton.setBounds(150, 210, 100, 30);
+        employerRadioButton.setBounds(250, 210, 100, 30);
+
+        // Add radio buttons to the button group
+        radioGroup.add(employeeRadioButton);
+        radioGroup.add(employerRadioButton);
+
+        b1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                try {
+                    // Database?? DBConnection con = new DBConnection();
+
+                    FileWriter fw = new FileWriter("login.txt", true);
+                    fw.write(t1.getText() + "\t" + t2.getText());
+
+                    // Check which radio button is selected and write to the same line
+                    if (employeeRadioButton.isSelected()) {
+                        fw.write("\tEmployee\n");
+                    } else if (employerRadioButton.isSelected()) {
+                        fw.write("\tEmployer\n");
+                    }
+
+                    fw.close();
+                    JFrame f = new JFrame();
+                    JOptionPane.showMessageDialog(f, "Employee Hired");
+                    dispose();
+                } catch (Exception e) {
+                }
+            }
+        });
+
+        add(t1);
+        add(t2);
+        add(b1);
+        add(employeeRadioButton);
+        add(employerRadioButton);
+    }
+}
 
 class Employer extends JFrame{
 	JLabel l1;
@@ -33,6 +107,15 @@ class Employer extends JFrame{
 		add(b2);
 		add(b3);
 		add(b4);
+		
+        b1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                SignUp s = new SignUp();
+                s.setVisible(true);
+                s.setBounds(200, 200, 500, 300);
+            }
+        });
+		
         b4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 // Dispose of the current employee screen

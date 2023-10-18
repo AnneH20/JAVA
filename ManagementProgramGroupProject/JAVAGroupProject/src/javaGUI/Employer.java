@@ -33,14 +33,34 @@ class Employer extends JFrame{
 		add(b2);
 		add(b3);
 		add(b4);
-		
+        b4.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                // Dispose of the current employee screen
+                dispose();
+                Login loginScreen = new Login(); // Create a new Login screen
+                loginScreen.setBounds(400, 200, 400, 300);
+                loginScreen.setVisible(true); // Show the login screen
+            }
+        });
 	}
+    Login loginScreen;
+    Employer(Login loginScreen){
+    	this.loginScreen = loginScreen;
+    }
 }
 
-class SimpleEmployer{
-	public static void main(String[] args) {
-		Employer e = new Employer();
-		e.setBounds(400,200,400,300);
-		e.setVisible(true);
-	}
+class SimpleEmployer {
+    public static void main(String[] args) {
+        Login loginScreen = new Login();
+        loginScreen.setBounds(400, 200, 400, 300);
+        loginScreen.setVisible(true);
+
+        SignUp signUpScreen = new SignUp();
+        signUpScreen.setBounds(400, 200, 400, 300);
+        signUpScreen.setVisible(false); // Hide the sign-up screen initially
+
+        Employer e = new Employer(loginScreen); // Pass the reference to the login screen
+        e.setBounds(400, 200, 400, 300);
+        e.setVisible(false); // Hide the employee screen initially
+    }
 }

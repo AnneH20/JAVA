@@ -1,2 +1,3 @@
-anne	1310
-sarah	sarah
+anne	anne	Employer
+sarah	sarah	Employer
+mack	mack	Employee

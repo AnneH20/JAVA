@@ -5,16 +5,19 @@ import javax.swing.*;
 import java.io.*;
 import java.sql.*;
 
-/* Database??
+/*
 class DBConnection{
 	Connection con;
 	DBConnection(){
 		try {
-		Class.forName("oracle.jbdc.driver.OracleDriver");
+		Class.forName("com,mysql.jdbc.Driver");
 		con = DriverManager.getConnection(
-				"jdbc.oracle:thin://@localhost/orcl", "root", "JackJill20!");
+				"jdbc:mysql://localhost:3306/CRUD", "root", "");
 		System.out.println("Connection Established...!");
-		}catch(Exception e) {}
+		}catch(Exception e) {
+			System.out.println("JDBC not register");
+			return;
+		}
 				
 	}
 }

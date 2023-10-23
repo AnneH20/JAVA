@@ -32,10 +32,10 @@ public class Main {
 		System.out.println("Creating a table...");
 		try {
 		stmt = con.createStatement();
-		String sql = "CREATE TABLE students(id INTEGER not null,"+
-					 "Name VARCHAR(255),"+
-					 "MARKS INTEGER(100),"+
-					 "PRIMARY KEY(id))";
+		String sql = "CREATE TABLE loginDB("+
+					 "Username VARCHAR(255),"+
+					 "Password VARCHAR(255),"+
+					 "EmployeeLevel int);";
 		stmt.executeUpdate(sql);
 		}catch(SQLException e) {
 			System.out.println("Table cannot be created!");
@@ -43,18 +43,21 @@ public class Main {
 		}
 		System.out.println("Table created successfully");
 		*/
-		/* Insert into table
+		
+		// Insert into table
 		System.out.println("Inserting into a table...");
 		try {
 		stmt = con.createStatement();
-		String sql = "INSERT INTO students(id,name,MARKS) VALUES(2,'Emily',95)";
+		String sql = "INSERT INTO loginDB(EmployeeLevel,Username,Password) VALUES(1,'Emily','Emily'), (2, 'Hannah', 'Hannah'), (1, 'Anne', 'Anne');";
 		stmt.executeUpdate(sql);
 		}catch(SQLException e) {
 			System.out.println("Record cannot be inserted!");
 			return;
 		}
 		System.out.println("Successfully added the record");
-		*/
+		
+		
+		/* Display Table
 		try {
 			stmt = con.createStatement();
 			String sql = "SELECT Name,MARKS FROM students";
@@ -84,5 +87,6 @@ public class Main {
 			System.out.println("No records found"+e);
 			return;
 		}
+		*/
 	}
 }
